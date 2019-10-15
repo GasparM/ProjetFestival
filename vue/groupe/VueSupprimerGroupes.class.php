@@ -12,7 +12,7 @@ use modele\metier\Groupe;
  */
 class VueSupprimerGroupes extends VueGenerique {
 
-    /** @var Groupe identificateur du groupe à afficher */
+    /** @var Groupe  identificateur du groupe à afficher */
     private $unGroupe;
 
     public function __construct() {
