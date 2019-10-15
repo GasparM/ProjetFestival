@@ -85,7 +85,7 @@ CREATE TABLE Utilisateur (
 CREATE TABLE Lieu(
     Lieu_Id INT(20) AUTO_INCREMENT,
     nom VARCHAR(25),
-    adresse VARCHAR(25),
+    adresse VARCHAR(100),
     capaciteAccueil VARCHAR(25),
     PRIMARY KEY (Lieu_Id)
 );
