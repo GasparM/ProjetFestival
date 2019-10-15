@@ -96,8 +96,6 @@ class VueSaisieGroupes extends VueGenerique {
                 <tr>
                     <td align="right"><input type="submit" value="Valider" name="valider">
                     </td>
-                    <td align="left"><input type="reset" value="Annuler" name="annuler">
-                    </td>
                 </tr>
             </table>
             <a href="index.php?controleur=groupes&action=liste">Retour</a>

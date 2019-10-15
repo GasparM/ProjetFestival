@@ -35,7 +35,4 @@ class VueSupprimerGroupes extends VueGenerique {
     function setUnGroupe(Groupe $unGroupe) {
         $this->unGroupe = $unGroupe;
     }
-
-
-
 }
