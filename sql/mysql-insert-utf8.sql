@@ -100,6 +100,7 @@ INSERT INTO Utilisateur VALUES (1,'Madame','Aubert', 'Lise', 'laubert@saint-malo
 INSERT INTO Utilisateur VALUES (2,'Monsieur','Dupont', 'Alain', 'adupont@saint-malo.fr', 'adupont', 'mdpadupont');
 INSERT INTO Utilisateur VALUES (3,'Madame','Joubert', 'Julie', 'jjoubert@saint-malo.fr', 'jjoubert', 'mdpjjoubert');
 
-
- 
-
+INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (1,'SALLE DU PANIER FLEURI','Rue de Bonneville','450');
+INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (2,'LE CABARET','MAIRIE DE PARAME, Place Georges COUDRAY','250');
+INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (3,'LE PARC DES CHENES','14 rue des chênes','2000');
+INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (4,'LE VILLAGE','Ecole LEGATELOIS, 25 rue Général de Castelnau','500'); 
