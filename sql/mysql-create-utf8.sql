@@ -4,15 +4,14 @@
 -- version ETUDIANTS - 2019/2020
 --
 CREATE DATABASE IF NOT EXISTS `festival` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
-
-CREATE USER 'festival'@'localhost' IDENTIFIED BY 'secret';
-GRANT ALL ON festival.* TO 'festival'@'localhost';
-USE `festival`;
  
 DROP TABLE IF EXISTS `Attribution`;
 DROP TABLE IF EXISTS `Offre`;
 DROP TABLE IF EXISTS `TypeChambre`;
+DROP TABLE IF EXISTS `Groupe`;
+DROP TABLE IF EXISTS `Utilisateur`;
+DROP TABLE IF EXISTS `Lieu`;
+DROP TABLE IF EXISTS `Representation`;
 DROP TABLE IF EXISTS `Groupe`;
 DROP TABLE IF EXISTS `Etablissement`;
 
@@ -83,9 +82,20 @@ CREATE TABLE Utilisateur (
 )ENGINE=INNODB;
 
 CREATE TABLE Lieu(
-    Lieu_Id INT(20) AUTO_INCREMENT,
+    lieu_Id INT(20) AUTO_INCREMENT,
     nom VARCHAR(250),
     adresse VARCHAR(100),
     capaciteAccueil VARCHAR(25),
     PRIMARY KEY (Lieu_Id)
+);
+
+CREATE TABLE Representation(
+    id INT(20) PRIMARY KEY AUTO_INCREMENT,
+    date DATE NOT NULL,
+    heure_debut TIME NOT NULL,
+    heure_fin TIME NOT NULL,
+    id_lieu INT(20) NOT NULL,
+    id_groupe VARCHAR(20) NOT NULL,
+constraint fk_lieu_id foreign key(id_lieu) references Lieu(lieu_id),
+constraint fk_groupe_id foreign key(id_groupe) references Groupe(id)
 );
