@@ -22,24 +22,24 @@ class Representation {
     
     /**
      * date de la représentation
-     * @var 
+     * @var string
      */
     private $date;
     
     /**
      * heure du début de la représentation
-     * @var float
+     * @var string
      */
     private $heureDebut;
     
     /**
      * heure de fin de la représentation 
-     * @var type 
+     * @var string 
      */
     private $heureFin;
 
     
-    function __construct(Lieu $lieu, Groupe $groupe, $date, $heureDebut, type $heureFin) {
+    function __construct(Lieu $lieu, Groupe $groupe, $date, $heureDebut, $heureFin) {
         $this->lieu = $lieu;
         $this->groupe = $groupe;
         $this->date = $date;

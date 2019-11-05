@@ -31,7 +31,7 @@ class Lieu {
     private $adresse;
     /**
      * capacité du lieu
-     * @var string
+     * @var int
      */
     private $capaciteAccueil;
     
