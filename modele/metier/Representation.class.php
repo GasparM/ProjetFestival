@@ -8,6 +8,12 @@ namespace modele\metier;
  */
 class Representation {
     
+    /**
+     * id de la représentation
+     * @var int
+     */
+    private $id;
+    
     /** 
      * lieu concerné par la représentation
      * @var modele\metier\Lieu
@@ -39,7 +45,8 @@ class Representation {
     private $heureFin;
 
     
-    function __construct(Lieu $lieu, Groupe $groupe, $date, $heureDebut, $heureFin) {
+    function __construct($id, Lieu $lieu, Groupe $groupe, $date, $heureDebut, $heureFin) {
+        $this->id=$id;
         $this->lieu = $lieu;
         $this->groupe = $groupe;
         $this->date = $date;
@@ -47,6 +54,10 @@ class Representation {
         $this->heureFin = $heureFin;
     }
 
+    function getId(){
+        return $this->id;
+    }
+    
     function getLieu(): Lieu {
         return $this->lieu;
     }
@@ -63,7 +74,7 @@ class Representation {
         return $this->heureDebut;
     }
 
-    function getHeureFin(): type {
+    function getHeureFin(): String {
         return $this->heureFin;
     }
 
@@ -79,11 +90,15 @@ class Representation {
         $this->date = $date;
     }
 
+    function setId($id) {
+        $this->id = $id;
+    }
+
     function setHeureDebut($heureDebut) {
         $this->heureDebut = $heureDebut;
     }
 
-    function setHeureFin(type $heureFin) {
+    function setHeureFin($heureFin) {
         $this->heureFin = $heureFin;
     }
     
