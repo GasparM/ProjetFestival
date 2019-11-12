@@ -1,4 +1,8 @@
 <?php 
+    use modele\dao\OffreDAO;
+    use modele\dao\Bdd;
+    use controleur\Session;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
     Session::demarrer();
     Bdd::connecter()
 ?>
@@ -12,12 +16,6 @@
     <body>
 
         <?php
-
-        use modele\dao\OffreDAO;
-        use modele\dao\Bdd;
-        use controleur\Session;
-
-require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         // Jeu d'essai
         $idEtab = '0350785N';

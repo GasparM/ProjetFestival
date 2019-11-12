@@ -1,12 +1,13 @@
-<!doctype html>
 <?php 
     use controleur\Session;
     use modele\dao\Bdd;
+    use modele\dao\UtilisateurDAO;
+    use modele\metier\Utilisateur;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
     Session::demarrer();
     Bdd::connecter()
 ?>
-
-
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">

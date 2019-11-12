@@ -1,4 +1,10 @@
 <?php 
+    use modele\metier\Groupe;
+    use modele\dao\GroupeDAO;
+    use modele\dao\Bdd;
+    use controleur\Session;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
+
     Session::demarrer();
     Bdd::connecter()
 ?>
@@ -12,13 +18,6 @@
     <body>
 
         <?php
-
-        use modele\metier\Groupe;
-        use modele\dao\GroupeDAO;
-        use modele\dao\Bdd;
-        use controleur\Session;
-
-require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         $id = 'g010';
 

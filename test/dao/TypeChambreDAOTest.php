@@ -1,4 +1,10 @@
 <?php 
+    use modele\dao\TypeChambreDAO;
+    use modele\dao\Bdd;
+    use modele\metier\TypeChambre;
+    use controleur\Session;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
+    
     Session::demarrer();
     Bdd::connecter()
 ?>
@@ -13,12 +19,7 @@
 
         <?php
 
-        use modele\dao\TypeChambreDAO;
-        use modele\dao\Bdd;
-        use modele\metier\TypeChambre;
-        use controleur\Session;
-
-        require_once __DIR__ . '/../../includes/autoload.inc.php';
+        
 
         $id = 'C3';
 

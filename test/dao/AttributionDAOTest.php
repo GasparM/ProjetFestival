@@ -1,4 +1,8 @@
 <?php 
+    use modele\dao\AttributionDAO;
+    use modele\dao\Bdd;
+    use controleur\Session;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
     Session::demarrer();
     Bdd::connecter()
 ?>
@@ -12,12 +16,6 @@
     <body>
 
     <?php
-
-        use modele\dao\AttributionDAO;
-        use modele\dao\Bdd;
-        use controleur\Session;
-
-        require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         echo "<h2>Test de AttributionDAO</h2>";
 

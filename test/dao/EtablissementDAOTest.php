@@ -1,4 +1,9 @@
 <?php 
+    use modele\dao\EtablissementDAO;
+    use modele\dao\Bdd;
+    use modele\metier\Etablissement;
+    use controleur\Session;
+    require_once __DIR__ . '/../../includes/autoload.inc.php';
     Session::demarrer();
     Bdd::connecter()
 ?>
@@ -13,15 +18,7 @@
 
         <?php
 
-        use modele\dao\EtablissementDAO;
-        use modele\dao\Bdd;
-        use modele\metier\Etablissement;
-        use controleur\Session;
-
-require_once __DIR__ . '/../../includes/autoload.inc.php';
-
         $id = '0352072M';
-
 
         echo "<h2>1- EtablissementDAO</h2>";
 
