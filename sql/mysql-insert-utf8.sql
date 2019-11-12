@@ -104,3 +104,35 @@ INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (1,'SALLE DU PA
 INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (2,'LE CABARET','MAIRIE DE PARAME, Place Georges COUDRAY','250');
 INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (3,'LE PARC DES CHENES','14 rue des chênes','2000');
 INSERT INTO Lieu (lieu_id, nom, adresse, capaciteAccueil) VALUES (4,'LE VILLAGE','Ecole LEGATELOIS, 25 rue Général de Castelnau','500'); 
+
+INSERT INTO Representation VALUES (1, '2017/07/11', '20:30', '21:45', 1, 'g045');
+INSERT INTO Representation VALUES (2, '2017/07/11', '21:45', '23:00', 1, 'g046');
+INSERT INTO Representation VALUES (3, '2017/07/11', '19:00', '20:00', 2, 'g024');
+INSERT INTO Representation VALUES (4, '2017/07/11', '20:30', '21:30', 2, 'g047');
+INSERT INTO Representation VALUES (5, '2017/07/11', '21:45', '23:15', 2, 'g048');
+INSERT INTO Representation VALUES (6, '2017/07/11', '11:00', '12:00', 3, 'g031');
+INSERT INTO Representation VALUES (7, '2017/07/11', '12:00', '13:00', 3, 'g035');
+
+
+INSERT INTO Representation VALUES (8, '2017/07/12', '20:30', '22:00', 1, 'g008');
+INSERT INTO Representation VALUES (9, '2017/07/12', '22:15', '23:30', 1, 'g009');
+INSERT INTO Representation VALUES (10, '2017/07/12', '20:00', '23:00', 2, 'g049');
+
+INSERT INTO Representation VALUES (11, '2017/07/13', '20:30', '22:00', 1, 'g050');
+INSERT INTO Representation VALUES (12, '2017/07/13', '20:30', '22:00', 2, 'g041');
+
+INSERT INTO Representation VALUES (13, '2017/07/14', '19:30', '21:00', 1, 'g020');
+INSERT INTO Representation VALUES (14, '2017/07/14', '21:15', '23:00', 1, 'g022');
+INSERT INTO Representation VALUES (15, '2017/07/14', '14:00', '14:30', 3, 'g010');
+INSERT INTO Representation VALUES (16, '2017/07/14', '14:30', '15:00', 3, 'g011');
+INSERT INTO Representation VALUES (17, '2017/07/14', '15:00', '15:30', 3, 'g012');
+INSERT INTO Representation VALUES (18, '2017/07/14', '15:30', '16:00', 3, 'g013');
+INSERT INTO Representation VALUES (19, '2017/07/14', '16:00', '16:30', 3, 'g017');
+INSERT INTO Representation VALUES (20, '2017/07/14', '16:30', '17:00', 3, 'g018');
+INSERT INTO Representation VALUES (21, '2017/07/14', '11:00', '12:00', 4, 'g032');
+INSERT INTO Representation VALUES (22, '2017/07/14', '15:00', '17:00', 4, 'g044');
+INSERT INTO Representation VALUES (23, '2017/07/14', '17:30', '19:30', 4, 'g042');
+
+INSERT INTO Representation VALUES (24, '2017/07/15', '11:00', '12:30', 4, 'g037');
+INSERT INTO Representation VALUES (25, '2017/07/15', '15:00', '16:00', 4, 'g025');
+INSERT INTO Representation VALUES (26, '2017/07/15', '16:30', '19:00', 4, 'g029');

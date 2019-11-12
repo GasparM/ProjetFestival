@@ -17,7 +17,7 @@ class RepresentationDAO {
     protected static function enregVersMetier($enreg) {
         $idGroupe = $enreg['ID_GROUPE'];
         $idLieu = $enreg['ID_LIEU'];
-        $ = $enreg['NOMBRECHAMBRES'];
+        $mbChambre = $enreg['NOMBRECHAMBRES'];
         // construire les objets Etablissement et TypeChambre à partir de leur identifiant       
         $objetEtab = EtablissementDAO::getOneById($idEtab);
         $objetTypeCh = TypeChambreDAO::getOneById($idTypeChambre);
