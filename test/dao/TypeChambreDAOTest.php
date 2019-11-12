@@ -1,3 +1,7 @@
+<?php 
+    Session::demarrer();
+    Bdd::connecter()
+?>
 <!doctype html>
 <html>
     <head>
@@ -17,8 +21,6 @@
         require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         $id = 'C3';
-        Session::demarrer();
-        Bdd::connecter();
 
         echo "<h2>Test TypeChambreDAO</h2>";
         // Test n°1

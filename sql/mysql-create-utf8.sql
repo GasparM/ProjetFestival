@@ -5,6 +5,10 @@
 --
 CREATE DATABASE IF NOT EXISTS `festival` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
  
+CREATE USER 'festival'@'localhost' IDENTIFIED BY 'secret';
+GRANT ALL ON festival.* TO 'festival'@'localhost';
+USE festival;
+
 DROP TABLE IF EXISTS `Attribution`;
 DROP TABLE IF EXISTS `Offre`;
 DROP TABLE IF EXISTS `TypeChambre`;

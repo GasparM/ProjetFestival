@@ -1,3 +1,7 @@
+<?php 
+    Session::demarrer();
+    Bdd::connecter()
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,8 +21,7 @@
 require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         $id = 'g010';
-        Session::demarrer();
-        Bdd::connecter();
+
 
         echo "<h2>Test GroupeDAO</h2>";
 

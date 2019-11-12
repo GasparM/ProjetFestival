@@ -1,3 +1,7 @@
+<?php 
+    Session::demarrer();
+    Bdd::connecter()
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +18,6 @@
         use controleur\Session;
 
         require_once __DIR__ . '/../../includes/autoload.inc.php';
-        Session::demarrer();
-        Bdd::connecter();
 
         echo "<h2>Test de AttributionDAO</h2>";
 

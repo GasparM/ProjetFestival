@@ -1,4 +1,12 @@
 <!doctype html>
+<?php 
+    use controleur\Session;
+    use modele\dao\Bdd;
+    Session::demarrer();
+    Bdd::connecter()
+?>
+
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,15 +18,12 @@
         <?php
 
         use modele\dao\UtilisateurDAO;
-        use modele\dao\Bdd;
         use modele\metier\Utilisateur;
-        use controleur\Session;
 
         require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         $login = 'jjoubert';
-        Session::demarrer();
-        Bdd::connecter();
+
 
         echo "<h2>Test UtilisateurDAO</h2>";
         // Test n°1

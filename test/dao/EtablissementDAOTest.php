@@ -1,3 +1,7 @@
+<?php 
+    Session::demarrer();
+    Bdd::connecter()
+?>
 <!doctype html>
 <html>
     <head>
@@ -17,8 +21,7 @@
 require_once __DIR__ . '/../../includes/autoload.inc.php';
 
         $id = '0352072M';
-        Session::demarrer();
-        Bdd::connecter();
+
 
         echo "<h2>1- EtablissementDAO</h2>";
 
