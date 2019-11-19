@@ -82,7 +82,7 @@ CREATE TABLE Utilisateur (
     prenom varchar(25) NOT NULL,
     email varchar(25),
     login varchar(25) UNIQUE NOT NULL,
-    mdp varchar(25)
+    mdp varchar(100)
 )ENGINE=INNODB;
 
 CREATE TABLE Lieu(
@@ -95,9 +95,9 @@ CREATE TABLE Lieu(
 
 CREATE TABLE Representation(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
-    date DATE NOT NULL,
-    heure_debut TIME NOT NULL,
-    heure_fin TIME NOT NULL,
+    date VARCHAR(100) NOT NULL,
+    heure_debut VARCHAR(100) NOT NULL,
+    heure_fin VARCHAR(100) NOT NULL,
     id_lieu INT(20) NOT NULL,
     id_groupe VARCHAR(20) NOT NULL,
 constraint fk_lieu_id foreign key(id_lieu) references Lieu(lieu_id),

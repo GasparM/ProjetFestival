@@ -136,3 +136,7 @@ INSERT INTO Representation VALUES (23, '2017/07/14', '17:30', '19:30', 4, 'g042'
 INSERT INTO Representation VALUES (24, '2017/07/15', '11:00', '12:30', 4, 'g037');
 INSERT INTO Representation VALUES (25, '2017/07/15', '15:00', '16:00', 4, 'g025');
 INSERT INTO Representation VALUES (26, '2017/07/15', '16:30', '19:00', 4, 'g029');
+
+
+
+UPDATE Utilisateur SET mdp = MD5(MDP) ; 

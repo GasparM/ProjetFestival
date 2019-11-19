@@ -14,6 +14,7 @@ function getTabOnglets() : array {
     $tabOnglets[]['libelle'] = "Gestion groupes"; $tabOnglets[3]['url'] = "index.php"; $tabOnglets[3]['controleur'] = "groupes";
     $tabOnglets[]['libelle'] = "Offre hébergement"; $tabOnglets[4]['url'] = "index.php"; $tabOnglets[4]['controleur'] = "offres";
     $tabOnglets[]['libelle'] = "Attribution chambres"; $tabOnglets[5]['url'] = "index.php"; $tabOnglets[5]['controleur'] = "attributions";
+    $tabOnglets[]['libelle'] = "Representations"; $tabOnglets[6]['url'] = "index.php"; $tabOnglets[6]['controleur'] = "representation";
     return $tabOnglets;
 }
 /**

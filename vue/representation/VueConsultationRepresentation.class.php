@@ -1,27 +1,27 @@
 <?php
 /**
- * Description Page de consultation des offres d'hébergement par établissmeent
- * -> affiche une page comportant un tableau par établissement, indiquant 
- * pour chaque type de chambre, le nombre de chambres offertes pour cet établissment
- * @author prof
- * @version 2018
+ * Description Page de consultation des représentation groupées par lieu et par date
+ * @author groupe 7
+ * @version 2019
  */
 
 namespace vue\representation;
 
 use vue\VueGenerique;
 use modele\metier\Representation;
+use modele\metier\Groupe;
+use modele\metier\Lieu;
 
 class VueConsultationRepresentation extends VueGenerique {
 
-    /** @var array liste des établissments */
-    private $lesEtablissements;
+    /** @var array liste des groupes */
+    private $lesGroupes;
 
-    /** @var array liste des types de chambre */
-    private $lesTypesChambres;
+    /** @var array liste des lieux */
+    private $lesLieux;
     
-    /** @var Array tableau associatif du nombre de chambres offert par etablissement, par type de chambres */
-    private $tabNbChambresOffertes;
+    /** @var Array tableau associatif des représentations par groupe, par lieu */
+    private $tabRepresentation;
     
 
     public function __construct() {
@@ -31,40 +31,42 @@ class VueConsultationRepresentation extends VueGenerique {
     public function afficher() {
         include $this->getEntete();
 
-        // IL FAUT QU'IL Y AIT AU MOINS UN ÉTABLISSEMENT ET UN TYPE CHAMBRE POUR QUE L'AFFICHAGE SOIT EFFECTUÉ        
-        if (count($this->lesEtablissements) != 0 && count($this->lesTypesChambres) != 0) {
-            // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE DU NOM ET D'UN TABLEAU COMPORTANT 1
-            // LIGNE D'EN-TÊTE ET 1 LIGNE PAR TYPE DE CHAMBRE
-            foreach ($this->lesEtablissements as $unEtablissement) {
-                // AFFICHAGE DU NOM DE L'ÉTABLISSEMENT ET D'UN LIEN VERS LE FORMULAIRE DE MODIFICATION
+        // IL FAUT QU'IL Y AIT AU MOINS UN GROUPE ET UN LIEU POUR QUE L'AFFICHAGE SOIT EFFECTUÉ        
+        if (count($this->lesGroupes) != 0 && count($this->lesLieux) != 0) {
+            // POUR CHAQUE GROUPE : AFFICHAGE DU NOM ET D'UN TABLEAU COMPORTANT 1
+            // LIGNE D'EN-TÊTE ET 1 LIGNE PAR LIEU
+            foreach ($this->lesGroupes as $unGroupe) {
+                // AFFICHAGE DU NOM DU GROUPE ET D'UN LIEN VERS LE FORMULAIRE DE MODIFICATION
                 ?>
-                <strong><?= $unEtablissement->getNom() ?></strong><br>
-                <a href="index.php?controleur=offres&action=modifier&id=<?= $unEtablissement->getId() ?>">
+                <strong><?= $unGroupe->getNom() ?></strong><br>
+                <a href="index.php?controleur=representation&action=modifier&id=<?= $unGroupe->getId() ?>">
                     Modifier
                 </a>
                 <table width="45%" cellspacing="0" cellpadding="0" class="tabQuadrille">
                     <!--AFFICHAGE DE LA LIGNE D'EN-TÊTE-->
                     <tr class="enTeteTabQuad">
-                        <td width="30%">Type</td>
-                        <td width="35%">Capacité</td>
-                        <td width="35%">Nombre de chambres</td> 
+                        <td width="30%">Lieu</td>
+                        <td width="35%">Groupe</td>
+                        <td width="35%">Heure Début</td> 
+                        <td width="35%">Heure Fin</td>
                     </tr>
                     <?php
-                    // BOUCLE SUR LES TYPES DE CHAMBRES (AFFICHAGE D'UNE LIGNE PAR TYPE DE 
-                    // CHAMBRE AVEC LE NOMBRE DE CHAMBRES OFFERTES DANS L'ÉTABLISSEMENT POUR 
-                    // LE TYPE DE CHAMBRE)
-                    /* @var TypeChambre $unTypeChambre */
-                    foreach ($this->lesTypesChambres as $unTypeChambre) {
+                    // BOUCLE SUR LES LIEUX (AFFICHAGE D'UNE LIGNE PAR LIEU AVEC LA REPRESENTATION POUR 
+                    // LE lieu)
+                    /* @var lieu $unLieu */
+                    foreach ($this->lesLieux as $unLieu) {
                         ?>
                         <tr class="ligneTabQuad">
-                            <td><?= $unTypeChambre->getId() ?></td>
-                            <td><?= $unTypeChambre->getLibelle() ?></td>
+                            <td><?= $unLieu->getNom() ?></td>
+                            <td><?= $unGroupe->getNom() ?></td>
+                            <td><?= $uneRepresentation->getHeureDebut() ?></td>
+                            <td><?= $uneRepresentation->getHeureFin() ?></td>
                             <?php
-                            // On récupère le nombre de chambres offertes pour l'établissement 
-                            // et le type de chambre actuellement traités
-                            $nbChambresOffertes = $this->tabNbChambresOffertes[$unEtablissement->getId()][$unTypeChambre->getId()];
+                            // On récupère le lieu et le groupe
+                            // pour la représentation actuellement traités
+                            $Representation = $this->tabRepresentation[$unGroupe->getId()][$unLieu->getLieu_Id()];
                             ?>
-                            <td><?= $nbChambresOffertes ?></td>
+                            <td><?= $Representation ?></td>
                         </tr>
                         <?php
                     }
@@ -76,16 +78,16 @@ class VueConsultationRepresentation extends VueGenerique {
         }
     }
 
-    public function setLesEtablissements(array $lesEtablissements) {
-        $this->lesEtablissements = $lesEtablissements;
+    public function setLesGroupes(array $lesGroupes) {
+        $this->lesGroupes = $lesGroupes;
     }
 
-    public function setLesTypesChambres(array $lesTypesChambres) {
-        $this->lesTypesChambres = $lesTypesChambres;
+    public function setLesLieux(array $lesLieux) {
+        $this->lesLieux = $lesLieux;
     }
     
-    public function setTabNbChambresOffertes(Array $tabNbChambresOffertes) {
-        $this->tabNbChambresOffertes = $tabNbChambresOffertes;
+    public function setTabRepresentation(Array $tabRepresentation) {
+        $this->tabRepresentation = $tabRepresentation;
     }
 
     
