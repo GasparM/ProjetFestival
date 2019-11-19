@@ -32,6 +32,7 @@ class VueConsultationRepresentation extends VueGenerique {
                 <td width="35%">Groupe</td>
                 <td width="35%">Heure Début</td> 
                 <td width="35%">Heure Fin</td>
+                
             </tr>
         <?php
         $datePrecedent = $this->lesRepresentations[0]->getDate();           //initialise la date de la première représentation
@@ -42,6 +43,7 @@ class VueConsultationRepresentation extends VueGenerique {
                 <td><?= $uneRepresentation->getGroupe()->getNom() ?></td>   <!-- affiche le groupe -->
                 <td><?= $uneRepresentation->getHeureDebut() ?></td>         <!-- affiche l'heure du début de la représentation -->
                 <td><?= $uneRepresentation->getHeureFin() ?></td>           <!-- affiche l'heure de fin de la représentation -->
+
             </tr>
             <?php
             if($uneRepresentation->getDate() != $datePrecedent){        // vérifie si la date de la réprésentation est la même que la précédente, si oui alors créer une nouvelle table
