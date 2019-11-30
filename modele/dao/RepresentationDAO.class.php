@@ -68,6 +68,19 @@ class RepresentationDAO {
         return $lesObjets;
     }
 
+    public static function getDate(){
+        $lesObjets = array();
+        $requete = "SELECT DISTINCT date FROM Representation ORDER BY DATE";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        if ($ok) {
+            while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lesObjets[] = implode($enreg);
+            }
+        }
+        return $lesObjets;
+    }
+
     /**
      * Construire un objet d'après son identifiant, à partir des des enregistrements de la table Representation
      * @param string $id identifiant de la Reprensentation

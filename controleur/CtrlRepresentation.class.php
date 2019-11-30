@@ -28,10 +28,9 @@ class CtrlRepresentation extends ControleurGenerique {
     function consulter() {
         $laVue = new VueConsultationRepresentation();
         $this->vue = $laVue;
-        // La vue a besoin de la liste des groupes et de celle des lieux
         Bdd::connecter();
         $laVue->setLesRepresentations(RepresentationDAO::getAll());
-        //$laVue->setTabRepresentation($this->getTabRepresentationParGroupeParLieu());
+        $laVue->setLesDates(RepresentationDAO::getDate());
         parent::controlerVueAutorisee();
         $this->vue->setTitre("Festival - representations");
         $this->vue->afficher();

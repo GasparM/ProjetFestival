@@ -17,6 +17,8 @@ class VueConsultationRepresentation extends VueGenerique {
     /** @var Array tableau associatif des représentations par groupe, par lieu */
     private $lesRepresentations;
     
+    /** @var Array tableau des dates des représentation */    
+    private $lesDates;
 
     public function __construct() {
         parent::__construct();
@@ -24,41 +26,34 @@ class VueConsultationRepresentation extends VueGenerique {
 
     public function afficher() {
         include $this->getEntete();
-        ?>
-        <table width="45%" cellspacing="0" cellpadding="0" class="tabQuadrille">
-            <!--AFFICHAGE DE LA LIGNE D'EN-TÊTE-->
+        $i=0;
+        foreach($this->lesDates as $uneDate){                                   // foreach pour parcourir tout les dates 
+        ?>        
+            <table width="45%" cellspacing="0" cellpadding="0" class="tabQuadrille">
             <tr class="enTeteTabQuad">
-                <td width="30%">Lieu</td>
+                <td width="45%">Lieu</td>
                 <td width="35%">Groupe</td>
-                <td width="35%">Heure Début</td> 
+                <td width="35%">Heure Début</td>    
                 <td width="35%">Heure Fin</td>
                 
             </tr>
-        <?php
-        $datePrecedent = $this->lesRepresentations[0]->getDate();           //initialise la date de la première représentation
-        foreach ($this->lesRepresentations as $uneRepresentation){          //foreach pour parcourir toute les représentations
-        ?>
-            <tr class="ligneTabQuad">
-                <td><?= $uneRepresentation->getLieu()->getNom() ?></td>     <!-- affiche le lieu -->
-                <td><?= $uneRepresentation->getGroupe()->getNom() ?></td>   <!-- affiche le groupe -->
-                <td><?= $uneRepresentation->getHeureDebut() ?></td>         <!-- affiche l'heure du début de la représentation -->
-                <td><?= $uneRepresentation->getHeureFin() ?></td>           <!-- affiche l'heure de fin de la représentation -->
-
-            </tr>
+            <h3> <?= $uneDate ?></h3>
             <?php
-            if($uneRepresentation->getDate() != $datePrecedent){        // vérifie si la date de la réprésentation est la même que la précédente, si oui alors créer une nouvelle table
-                $datePrecedent=$uneRepresentation->getDate();           // prend la nouvelle date
-                ?> 
-                <h3><?= $datePrecedent?></h3>                           <!-- affiche la date -->
-                </table><br>                                            <!-- creer un nouveau tableau -->
-                <table width="45%" cellspacing="0" cellpadding="0" class="tabQuadrille">
-                <tr class="enTeteTabQuad">
-                    <td width="30%">Lieu</td>
-                    <td width="35%">Groupe</td>
-                    <td width="35%">Heure Début</td> 
-                    <td width="35%">Heure Fin</td>
+            while($this->lesRepresentations[$i]->getDate() == $uneDate){        //while qui permet d'afficher toute les représentations de chaque date
+                ?>
+                
+                <tr class="ligneTabQuad">
+                    <td><?= $this->lesRepresentations[$i]->getLieu()->getNom() ?></td>     <!-- affiche le lieu -->
+                    <td><?= $this->lesRepresentations[$i]->getGroupe()->getNom() ?></td>   <!-- affiche le groupe -->
+                    <td><?= $this->lesRepresentations[$i]->getHeureDebut() ?></td>         <!-- affiche l'heure du début de la représentation -->
+                    <td><?= $this->lesRepresentations[$i]->getHeureFin() ?></td>           <!-- affiche l'heure de fin de la représentation -->
                 </tr>
                 <?php
+                if($i < count($this->lesRepresentations)-1){                    // si pour savoir si on dépasse le nombre de représentations et arrête le while
+                    $i+=1;
+                }else{
+                    break;
+                }
             }
         }
         include $this->getPied();
@@ -68,4 +63,7 @@ class VueConsultationRepresentation extends VueGenerique {
         $this->lesRepresentations = $lesRepresentations;
     }
     
+    public function setLesDates(array $lesDates){
+        $this->lesDates = $lesDates;
+    }
 }
