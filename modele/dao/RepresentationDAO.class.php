@@ -67,7 +67,11 @@ class RepresentationDAO {
         }
         return $lesObjets;
     }
-
+    
+    /**
+     * Retourne la liste des dates présentes
+     * @return array de string 
+     */
     public static function getDate(){
         $lesObjets = array();
         $requete = "SELECT DISTINCT date FROM Representation ORDER BY DATE";
@@ -80,7 +84,7 @@ class RepresentationDAO {
         }
         return $lesObjets;
     }
-
+    
     /**
      * Construire un objet d'après son identifiant, à partir des des enregistrements de la table Representation
      * @param string $id identifiant de la Reprensentation
@@ -138,8 +142,8 @@ class RepresentationDAO {
      */
     public static function update($id, Representation $objet) {
         $ok = false;
-        $requete = "UPDATE Representation SET DATE=:date, HEURE_DEBUT=:heureDebut,
-           HEURE_FIN=:heureFin, ID_LIEU=:id_lieu, ID_GROUPE=:id_groupe WHERE ID=:id";
+        $requete = "UPDATE Representation SET date=:date, heure_debut=:heureDebut,
+           heure_fin=:heureFin, id_lieu=:id_lieu, id_groupe=:id_groupe WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);
@@ -147,5 +151,16 @@ class RepresentationDAO {
         return ($ok && $stmt->rowCount() > 0);
     }
     
-
+    /**
+     * Permet de vérifier s'il existe ou non une reprensentation ayant déjà le même identifiant dans la BD
+     * @param string $id identifiant de la représentation à tester
+     * @return boolean =true si l'id existe déjà, =false sinon
+     */
+    public static function isAnExistingId($id) {
+        $requete = "SELECT COUNT(*) FROM Representation WHERE ID=:id";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchColumn(0);
+    }
 }

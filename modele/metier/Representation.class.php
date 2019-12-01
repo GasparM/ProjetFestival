@@ -28,7 +28,7 @@ class Representation {
     
     /**
      * date de la représentation
-     * @var date
+     * @var string
      */
     private $date;
     

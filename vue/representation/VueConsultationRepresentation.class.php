@@ -35,6 +35,8 @@ class VueConsultationRepresentation extends VueGenerique {
                 <td width="35%">Groupe</td>
                 <td width="35%">Heure Début</td>    
                 <td width="35%">Heure Fin</td>
+                <td width="20%">Supprimer</td>
+                <td width="20%">Modifier</td>
                 
             </tr>
             <h3> <?= $uneDate ?></h3>
@@ -47,6 +49,8 @@ class VueConsultationRepresentation extends VueGenerique {
                     <td><?= $this->lesRepresentations[$i]->getGroupe()->getNom() ?></td>   <!-- affiche le groupe -->
                     <td><?= $this->lesRepresentations[$i]->getHeureDebut() ?></td>         <!-- affiche l'heure du début de la représentation -->
                     <td><?= $this->lesRepresentations[$i]->getHeureFin() ?></td>           <!-- affiche l'heure de fin de la représentation -->
+                    <td><a href="index.php?controleur=representation&action=supprimer&id=<?= $this->lesRepresentations[$i]->getId() ?>" >Supprimer</a></td>
+                    <td><a href="index.php?controleur=representation&action=modifier&id=<?= $this->lesRepresentations[$i]->getId() ?>" >Modifier</a> </td>
                 </tr>
                 <?php
                 if($i < count($this->lesRepresentations)-1){                    // si pour savoir si on dépasse le nombre de représentations et arrête le while
@@ -56,7 +60,9 @@ class VueConsultationRepresentation extends VueGenerique {
                 }
             }
         }
-        include $this->getPied();
+        include $this->getPied();?>
+        <a href="index.php?controleur=representation&action=creer" >Ajouter une représentation</a>
+        <?php
     }
     
     public function setLesRepresentations(array $lesRepresentations){

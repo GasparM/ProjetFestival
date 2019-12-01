@@ -22,9 +22,9 @@ class VueSupprimerRepresentation extends VueGenerique {
     public function afficher() {
         include $this->getEntete();
         ?>
-        <br><center>Voulez-vous vraiment supprimer la representation <?= $this->uneRepresentation->getGroupe() ?> ?
+            <br><center>Voulez-vous vraiment supprimer la representation du <?= $this->uneRepresentation->getDate() ?> <br> avec le groupe <?= $this->uneRepresentation->getGroupe()->getNom() ?> au <?= $this->uneRepresentation->getLieu()->getNom()?> ?
             <h3><br>
-                <a href="index.php?controleur=representation&action=validerSupprimer&id=<?= $this->uneRepresenation->getId() ?>">Oui</a>
+                <a href="index.php?controleur=representation&action=validerSupprimer&id=<?=$this->uneRepresentation->getId()?>">Oui</a>
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 <a href="index.php?controleur=representation">Non</a></h3>
         </center>

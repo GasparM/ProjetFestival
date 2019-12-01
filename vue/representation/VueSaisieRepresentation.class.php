@@ -6,7 +6,7 @@ use vue\VueGenerique;
 use modele\metier\Representation;
 
 /**
- * Description Page de saisie/modification des representations
+ * Description Page de saisie/modification des representation
  * @author g07
  * @version 2019
  */
@@ -15,6 +15,12 @@ class VueSaisieRepresentation extends VueGenerique {
     /** @var Represenation à afficher */
     private $uneRepresentation;
 
+    /** @var Array de Lieu */
+    private $lesLieux;
+    
+    /** @var Array de Groupe */
+    private $lesGroupes;
+    
     /** @var string ="creer" ou = "modifier" en fonction de l'utilisation du formulaire */
     private $actionRecue;
 
@@ -53,35 +59,64 @@ class VueSaisieRepresentation extends VueGenerique {
                     // sinon l'id est dans un champ caché 
                     ?>
                     <tr>
-                        <td><input type="hidden" value="<?= $this->uneRepresentation->getId(); ?>" name="id"></td><td></td>
+                        <td><input type="hidden" value="<?= $this->uneRepresentation->getId() ?>" name="id"></td><td></td>
                     </tr>
                     <?php
                 }
                 ?>
-                    
-                    
+   
                 <tr class="ligneTabNonQuad">
-                    <td> Nom groupe : </td>
-                    <td><input type="text" value="<?= $this->uneRepresentation->getGroupe() ?>" name="nom_groupe" pattern="[a-zA-Z]{1,}" size="50" 
-                               maxlength="45"></td>
+                    <td> Lieu : </td>
+                    <td><select name="lieu"
+                    <?php 
+                        // création du spinner lieux
+                        foreach ($this->lesLieux as $unLieu){ 
+                            if ($unLieu->getLieu_Id() == $this->uneRepresentation->getLieu()->getLieu_Id()){ ?>
+                                <option selected="selected" value="<?= $unLieu->getLieu_Id() ?>" ><?= $unLieu->getNom()?></option>
+                            <?php
+                            }else{ ?> 
+                                <option value="<?= $unLieu->getLieu_Id() ?>"><?= $unLieu->getNom()?></option>
+                            <?php 
+                            }
+                        } ?>
+                    </select></td>
                 </tr>
                 
                 <tr class="ligneTabNonQuad">
-                    <td> Lieu : </td>
-                    <td><input type="text" value="<?= $this->uneRepresentation->getLieu() ?>" name="nom_lieu" 
-                               size="50" maxlength="50"></td>
+                    <td> Groupe : </td>
+                    <<td><select name="groupe"
+                    <?php 
+                        // création du spinner groupe
+                        foreach ($this->lesGroupes as $unGroupe){ 
+                            if ($unGroupe->getId() == $this->uneRepresentation->getGroupe()->getId()){ ?>
+                                <option selected="selected" value="<?= $unGroupe->getId() ?>"  ><?= $unGroupe->getNom()?></option>
+                            <?php
+                            }else{ ?> 
+                                <option value="<?= $unGroupe->getId() ?>"><?= $unGroupe->getNom()?></option>
+                            <?php 
+                            }?> 
+                            <option value="<?= $unGroupe->getId() ?>"><?= $unGroupe->getNom()?></option>
+                        <?php 
+                        } ?>
+                    </select></td>
+                </tr>
+                
+                <tr class="ligneTabNonQuad">
+                    <td> Date : </td>
+                    <td><input type="text" value="<?= $this->uneRepresentation->getDate() ?>" name="date" 
+                               size="50" maxlength="45" placeholder="AAAA/MM/JJ"></td>
                 </tr>
                 
                 <tr class="ligneTabNonQuad">
                     <td> Heure Debut : </td>
-                    <td><input type="text" value="<?= $this->uneRepresentation->getHeureDebut() ?>" name="heure_debut" 
-                               size="50" maxlength="45"></td>
+                    <td><input type="text" value="<?= $this->uneRepresentation->getHeureDebut() ?>" name="heure_Debut" 
+                               size="50" maxlength="45" placeholder="HH:MM:SS"></td>
                 </tr>
 
                 <tr class="ligneTabNonQuad">
                     <td> Heure Fin : </td>
-                    <td><input type="text" value="<?= $this->uneRepresentation->getHeureFin() ?>" name="heure_fin" size="40" 
-                               maxlength="35"></td>
+                    <td><input type="text" value="<?= $this->uneRepresentation->getHeureFin() ?>" name="heure_Fin" size="40" 
+                               maxlength="35" placeholder="HH:MM:SS"></td>
                 </tr>
             </table>
 
@@ -97,12 +132,16 @@ class VueSaisieRepresentation extends VueGenerique {
         include $this->getPied();
     }
 
-    public function getUneRepresentation(): Representation {
-        return $this->uneRepresentation;
-    }
-
     public function setUneRepresentation(Representation $uneRepresentation) {
         $this->uneRepresentation = $uneRepresentation;
+    }
+    
+    function setLesLieux(array $lesLieux) {
+        $this->lesLieux = $lesLieux;
+    }
+
+    function setLesGroupes(array $lesGroupes) {
+        $this->lesGroupes = $lesGroupes;
     }
 
     public function setActionRecue(string $action) {
