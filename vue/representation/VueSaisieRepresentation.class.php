@@ -95,7 +95,6 @@ class VueSaisieRepresentation extends VueGenerique {
                                 <option value="<?= $unGroupe->getId() ?>"><?= $unGroupe->getNom()?></option>
                             <?php 
                             }?> 
-                            <option value="<?= $unGroupe->getId() ?>"><?= $unGroupe->getNom()?></option>
                         <?php 
                         } ?>
                     </select></td>
